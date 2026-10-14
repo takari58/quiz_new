@@ -18,89 +18,59 @@ L.tileLayer(
 ).addTo(map);
 
 async function loadSpotData() {
-
     try {
-
         const [spotsResponse, spots2Response] =
             await Promise.all([
                 fetch("spots.json"),
                 fetch("spots2.json")
             ]);
 
-
         if (!spotsResponse.ok) {
-
             throw new Error(
                 "spots.jsonの読み込みに失敗しました"
             );
         }
 
-
         if (!spots2Response.ok) {
-
             throw new Error(
                 "spots2.jsonの読み込みに失敗しました"
             );
         }
 
-
         // JSONをJavaScriptの配列に変換
         const spots =
             await spotsResponse.json();
-
         const spots2 =
             await spots2Response.json();
-
-
         // 地図処理開始
         initializeMap(
             spots,
             spots2
         );
 
-
     } catch (error) {
-
         console.error(error);
-
         document.getElementById("result").textContent =
-            "スポットデータの読み込みに失敗しました。";
+            "スポットデータの読み込みに失敗";
     }
 }
-
-
-// ========================================
-// 地図処理
-// ========================================
 
 function initializeMap(
     spots,
     spots2
 ) {
 
-
-    // ========================================
-    // localStorage
-    // ========================================
-
     let answeredSpots =
         JSON.parse(
             localStorage.getItem("answeredSpots")
         ) || [];
-
 
     let arrivalSpots =
         JSON.parse(
             localStorage.getItem("arrivalSpots")
         ) || [];
 
-
-    // ========================================
-    // 通常スポットを地図に表示
-    // ========================================
-
     spots.forEach(spot => {
-
 
         // ポップアップ
         const popupContent = `
@@ -115,7 +85,6 @@ function initializeMap(
             </div>
         `;
 
-
         // マーカー
         L.marker([
             spot.lat,
@@ -123,7 +92,6 @@ function initializeMap(
         ])
         .addTo(map)
         .bindPopup(popupContent);
-
 
         // クイズ可能範囲
         L.circle(
@@ -137,30 +105,21 @@ function initializeMap(
                 fillOpacity: 0.2
             }
         ).addTo(map);
-
     });
 
-
-    // ========================================
     // 激レアスポット更新
-    // ========================================
-
-    function updateRareSpots() {
-
+    function updateRareSpots() 
         const totalScore =
             Number(
                 localStorage.getItem("totalScore")
             ) || 0;
-
 
         const currentAnsweredSpots =
             JSON.parse(
                 localStorage.getItem("answeredSpots")
             ) || [];
 
-
         spots2.forEach(spot => {
-
 
             // 必要得点未達
             if (
@@ -170,19 +129,16 @@ function initializeMap(
                 return;
             }
 
-
             // すでにマーカー作成済み
             if (spot.marker) {
                 return;
             }
-
 
             // 回答済みか
             const answered =
                 currentAnsweredSpots.includes(
                     spot.name
                 );
-
 
             // 激レアマーカー
             const marker =
@@ -201,7 +157,6 @@ function initializeMap(
                     }
                 ).addTo(map);
 
-
             // 激レアの回答可能範囲
             L.circle(
                 [
@@ -215,13 +170,8 @@ function initializeMap(
                     fillOpacity: 0.2
                 }
             ).addTo(map);
-
-
             let popupContent;
-
-
             if (answered) {
-
                 popupContent = `
                     <div style="text-align:center;">
                         <h3>★ ${spot.name}</h3>
@@ -244,66 +194,45 @@ function initializeMap(
                 `;
             }
 
-
             marker.bindPopup(
                 popupContent
             );
 
-
             // マーカー保存
             spot.marker = marker;
-
         });
     }
-
 
     // 初回
     updateRareSpots();
 
-
-    // ========================================
     // 距離計算
-    // ========================================
-
     function getDistance(
         lat1,
         lng1,
         lat2,
         lng2
     ) {
-
         const R = 6371000;
-
-
         const toRad =
             x => x * Math.PI / 180;
-
-
         const dLat =
             toRad(
                 lat2 - lat1
             );
-
-
         const dLng =
             toRad(
                 lng2 - lng1
             );
-
-
         const a =
             Math.sin(dLat / 2) ** 2 +
-
             Math.cos(
                 toRad(lat1)
             ) *
-
             Math.cos(
                 toRad(lat2)
             ) *
-
             Math.sin(dLng / 2) ** 2;
-
 
         return (
             2 *
@@ -315,16 +244,11 @@ function initializeMap(
         );
     }
 
-
-    // ========================================
     // クイズへ移動
-    // ========================================
-
     function goToQuiz(
         spotName,
         arrivalPoint
     ) {
-
         // すでに到達ポイントを取得しているか
         if (
             !arrivalSpots.includes(
@@ -332,28 +256,23 @@ function initializeMap(
             )
         ) {
 
-
             let totalScore =
                 Number(
                     localStorage.getItem("totalScore")
                 ) || 0;
 
-
             // 到達ポイントを加算
             totalScore += arrivalPoint;
-
 
             localStorage.setItem(
                 "totalScore",
                 totalScore
             );
 
-
             // 到達済みに追加
             arrivalSpots.push(
                 spotName
             );
-
 
             localStorage.setItem(
                 "arrivalSpots",
@@ -363,46 +282,31 @@ function initializeMap(
             );
         }
 
-
         // クイズページへ
         window.location.href =
             `quiz.html?spot=${encodeURIComponent(spotName)}`;
     }
 
-
-    // ========================================
     // 現在地取得
-    // ========================================
-
     if (
         !navigator.geolocation
     ) {
-
         document.getElementById("result")
             .textContent =
             "この端末では位置情報を利用できません。";
-
         return;
     }
 
-
     navigator.geolocation.watchPosition(
-
         position => {
-
 
             const userLat =
                 position.coords.latitude;
 
-
             const userLng =
                 position.coords.longitude;
 
-
-            // ========================================
             // 緯度・経度表示
-            // ========================================
-
             document.getElementById(
                 "coords"
             ).innerHTML = `
@@ -410,11 +314,7 @@ function initializeMap(
                 経度: ${userLng.toFixed(6)}
             `;
 
-
-            // ========================================
             // 現在地マーカー
-            // ========================================
-
             if (
                 window.userMarker
             ) {
@@ -423,7 +323,6 @@ function initializeMap(
                     window.userMarker
                 );
             }
-
 
             window.userMarker =
                 L.marker(
@@ -438,17 +337,10 @@ function initializeMap(
                 .addTo(map)
                 .bindPopup("現在地");
 
-
             let found = false;
 
-
-            // ========================================
             // 通常スポット判定
-            // ========================================
-
             spots.forEach(spot => {
-
-
                 const distance =
                     getDistance(
                         userLat,
@@ -456,7 +348,6 @@ function initializeMap(
                         spot.lat,
                         spot.lng
                     );
-
 
                 // 到達した場合
                 if (
@@ -467,7 +358,6 @@ function initializeMap(
                 ) {
 
                     found = true;
-
 
                     // 通常スポットは到達ポイント0点
                     document.getElementById(
@@ -485,13 +375,8 @@ function initializeMap(
 
             });
 
-
-            // ========================================
             // 激レアスポット判定
-            // ========================================
-
             spots2.forEach(spot => {
-
 
                 const totalScore =
                     Number(
@@ -499,7 +384,6 @@ function initializeMap(
                             "totalScore"
                         )
                     ) || 0;
-
 
                 // 必要得点未達
                 if (
@@ -509,7 +393,6 @@ function initializeMap(
                     return;
                 }
 
-
                 const distance =
                     getDistance(
                         userLat,
@@ -518,16 +401,13 @@ function initializeMap(
                         spot.lng
                     );
 
-
                 if (
                     !answeredSpots.includes(
                         spot.name
                     ) &&
                     distance <= spot.radius
                 ) {
-
                     found = true;
-
 
                     document.getElementById(
                         "result"
@@ -544,40 +424,27 @@ function initializeMap(
 
             });
 
-
-            // ========================================
             // スポットにいない場合
-            // ========================================
-
             if (!found) {
-
                 document.getElementById(
                     "result"
                 ).innerHTML =
                     "新発田市内を移動してください";
             }
-
         },
 
-
-        // ========================================
         // 位置情報エラー
-        // ========================================
-
         error => {
-
             console.error(
                 "位置情報エラー:",
                 error
             );
-
 
             document.getElementById(
                 "result"
             ).textContent =
                 "位置情報が取得できません。";
         },
-
         {
             enableHighAccuracy: true,
             maximumAge: 5000,
@@ -585,13 +452,8 @@ function initializeMap(
         }
     );
 
-
-    // ========================================
     // 合計得点表示
-    // ========================================
-
     function updateTotalScore() {
-
 
         const totalScore =
             Number(
@@ -606,37 +468,27 @@ function initializeMap(
                 "totalScore"
             );
 
-
         if (scoreElement) {
-
             scoreElement.textContent =
                 `現在の得点：${totalScore}点`;
         }
-
 
         // 激レアスポット更新
         updateRareSpots();
     }
 
-
-    // ========================================
     // リセット
-    // ========================================
-
     window.resetGame =
         function() {
-
 
             const result =
                 confirm(
                     "得点と回答履歴をすべてリセットしますか？"
                 );
 
-
             if (!result) {
                 return;
             }
-
 
             // 得点リセット
             localStorage.setItem(
@@ -644,13 +496,11 @@ function initializeMap(
                 "0"
             );
 
-
             // クイズ回答履歴リセット
             localStorage.setItem(
                 "answeredSpots",
                 JSON.stringify([])
             );
-
 
             // 到達ポイント履歴リセット
             localStorage.setItem(
@@ -658,35 +508,23 @@ function initializeMap(
                 JSON.stringify([])
             );
 
-
             alert(
                 "得点と回答履歴をリセットしました。"
             );
 
-
             location.reload();
         };
-
 
     // 初回得点表示
     updateTotalScore();
 }
 
-
-// ========================================
 // クォート対策
-// ========================================
-
 function escapeQuote(text) {
-
     return text
         .replace(/\\/g, "\\\\")
         .replace(/'/g, "\\'");
 }
 
-
-// ========================================
 // JSON読み込み開始
-// ========================================
-
 loadSpotData();
