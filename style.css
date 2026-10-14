@@ -1,0 +1,87 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    font-family: Arial;
+    text-align: center;
+}
+
+header{
+    background:orange;
+    color:white;
+    text-align:center;
+    padding:15px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+header h1{
+    font-size:24px;
+}
+
+/* 地図 */
+#map {
+    height: 350px;
+    width: 95%;
+    margin: auto;
+    border: 2px solid black;
+}
+
+/* 結果 */
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    color: blue;
+}
+
+/* 現在地表示（緯度・経度・） */
+#coords {
+    margin-top: 10px;
+    font-size: 14px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ccc;
+}
+
+/* 合計得点 */
+#totalScore {
+    margin: 10px auto;
+    padding: 10px;
+    width: 250px;
+    background-color: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 開発用リセットボタン */
+#resetButton {
+    margin: 15px;
+    padding: 10px 20px;
+    width: auto;
+    height: auto;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#resetButton:hover {
+    background-color: #333;
+}
+
+@media screen and (max-width:768px){
+
+    header h1{
+        font-size:24px;
+    }
+}

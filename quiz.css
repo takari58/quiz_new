@@ -1,0 +1,89 @@
+/* クイズ画面のcss */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #dbe3ec;
+    text-align: center;
+}
+
+.quiz-container {
+    background-color: #eeeeee;
+    width: 600px;
+    margin: 80px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* タイトル */
+#title {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+/* 問題 */
+#quizBox {
+    font-size: 60px;
+    margin-bottom: 25px;
+}
+
+/* ボタン */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+    border: none;
+    border-radius: 6px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-true {
+    background-color: #4CAF50;
+}
+
+.btn-false {
+    background-color: #f44336;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+/* 結果 */
+#result {
+    margin-top: 20px;
+    font-size: 50px;
+}
+
+/* スコア画面 */
+.hidden {
+    display: none;
+}
+
+#scoreScreen {
+    margin-top: 50px;
+    font-size: 50px;
+}
+
+#explanation{
+    margin-top:10px;
+    padding:10px;
+    background:#f5f5f5;
+    border-radius:8px;
+    line-height:1.5;
+    font-size:50px
+}
+
+.scoreText{
+    font-size: 100px;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新発田街歩きアプリ</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>ランドマーククイズ</h1>
+    </header>
+
+<!-- 合計得点 -->
+<div id="totalScore">
+    現在の得点：0点
+</div>
+
+<div id="map"></div>
+
+<div id="coords"></div> 
+
+<div id="result">現在地を取得中...</div>
+
+<!-- 開発用リセットボタン -->
+<button id="resetButton" onclick="resetGame()">
+    得点・回答履歴をリセット
+</button>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

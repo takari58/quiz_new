@@ -1,0 +1,73 @@
+[
+    {
+        "name": "テスト",
+        "lat": 37.958972,  
+        "lng":139.339891,
+        "radius": 50,
+        "unlockPoint":0
+    },
+    {
+      "name": "藤倉メンチカツや",
+      "lat": 37.93682,
+      "lng": 139.34488,
+      "radius":50,
+      "unlockPoint":480,
+      "image":"image/castle.png"
+    },
+    {
+      "name": "ボン・タケダ",
+      "lat": 37.94039, 
+      "lng": 139.33600,
+      "radius": 50,
+      "unlockPoint":960,
+      "image":"image/castle.png"
+    }, 
+    {
+      "name": "いっぷく",
+      "lat": 37.94437654050752, 
+      "lng": 139.3407439626735,
+      "radius": 50,
+      "unlockPoint":1440,
+      "image":"image/castle.png"
+    },
+    {
+      "name": "文化洋食ino",
+      "lat": 37.96236411397717, 
+      "lng": 139.33428189358867 ,
+      "radius": 50,
+      "unlockPoint":1920,
+      "image":"image/castle.png"
+    },
+    {
+      "name": "やすけカレー",
+      "lat": 37.93774827263629, 
+      "lng": 139.33615892651278 ,
+      "radius": 50,
+      "unlockPoint":2400,
+      "image":"image/yasuke.jpg"
+    },
+    {
+      "name": "堀部安兵衛 生誕の碑",
+      "lat": 37.95290795, 
+      "lng": 139.327346,
+      "radius": 50,
+      "unlockPoint":2880,
+      "image":"image/castle.png"
+    },
+    {
+      "name": "大倉喜八郎 生誕の地碑",
+      "lat": 37.95010281, 
+      "lng": 139.3218262,
+      "radius": 50,
+      "unlockPoint":3360,
+      "image":"image/castle.png"
+    },
+    {
+      "name": "レストラン蒲城",
+      "lat": 37.95049684, 
+      "lng": 139.3394747,
+      "radius": 30,
+      "unlockPoint":3360,
+      "image":"image/castle.png"
+    }
+]

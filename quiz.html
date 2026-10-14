@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クイズ</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h2 id="title">〇×クイズ</h2>
+
+        <div id="quizBox"></div>
+
+        <div class="buttons">
+            <button class="btn-true" onclick="answer(true)">〇</button>
+            <button class="btn-false" onclick="answer(false)">×</button>
+        </div>
+
+        <p id="result"></p>
+        <p id="explanation"></p>
+    </div>
+
+    <div id="scoreScreen" class="hidden">
+        <h2>結果発表</h2>
+        <p id="scoreText"></p>
+        <a href="index.html">← マップに戻る</a>
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html>
