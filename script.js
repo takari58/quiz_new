@@ -64,6 +64,7 @@ function initializeMap(spots, spots2) {
     localStorage.getItem("arrivalSpots") || "[]"
   );
 
+  //通常スポット表示
   spots.forEach(spot => {
 
     const popupContent = `
@@ -73,10 +74,12 @@ function initializeMap(spots, spots2) {
       </div>
     `;
 
+    //各スポットにマーカー設置
     L.marker([spot.lat, spot.lng])
       .addTo(map)
       .bindPopup(popupContent);
 
+    //回答可能範囲の円
     L.circle(
       [spot.lat, spot.lng],
       {
@@ -87,8 +90,9 @@ function initializeMap(spots, spots2) {
     ).addTo(map);
   });
 
+  //激レア処理
   function updateRareSpots() {
-
+    //合計得点
     const totalScore =
       Number(localStorage.getItem("totalScore")) || 0;
 
@@ -96,14 +100,16 @@ function initializeMap(spots, spots2) {
       localStorage.getItem("answeredSpots") || "[]"
     );
 
+    //激レアスポット表示
     spots2.forEach(spot => {
-
+      //激レア開放条件
       if (totalScore < spot.unlockPoint) return;
       if (spot.marker) return;
 
       const answered =
         currentAnsweredSpots.includes(spot.name);
 
+      //激レアピン
       const marker = L.marker(
         [spot.lat, spot.lng],
         {
@@ -116,6 +122,7 @@ function initializeMap(spots, spots2) {
         }
       ).addTo(map);
 
+      //回答可能範囲の円
       L.circle(
         [spot.lat, spot.lng],
         {
@@ -146,6 +153,7 @@ function initializeMap(spots, spots2) {
     });
   }
 
+  //距離計算(ハーサイン公式)
   function getDistance(lat1, lng1, lat2, lng2) {
 
     const R = 6371000;
@@ -168,8 +176,9 @@ function initializeMap(spots, spots2) {
       );
   }
 
+  //クイズ画面移動
   function goToQuiz(spotName, arrivalPoint = 0) {
-
+    //初回到達時
     if (!arrivalSpots.includes(spotName)) {
 
       let totalScore =
@@ -217,6 +226,7 @@ function initializeMap(spots, spots2) {
         if (window.userMarker)
           map.removeLayer(window.userMarker);
 
+        //現在地マーカー
         window.userMarker = L.marker(
           [userLat, userLng],
           { icon: userIcon }
@@ -248,6 +258,7 @@ function initializeMap(spots, spots2) {
             continue;
           }
 
+          //円に入ったかの計算
           const distance = getDistance(
             userLat,
             userLng,
@@ -259,6 +270,7 @@ function initializeMap(spots, spots2) {
 
             found = true;
 
+            //激レア到達時の青文字
             document.getElementById("result").innerHTML =
               `<b>${spots2.includes(spot) ? "★ " : ""}${spot.name}に到達！</b><br>
                <a href="quiz.html?spot=${encodeURIComponent(spot.name)}">
@@ -294,6 +306,7 @@ function initializeMap(spots, spots2) {
     );
   }
 
+  //得点の更新
   function updateTotalScore() {
 
     const totalScore =
@@ -310,8 +323,8 @@ function initializeMap(spots, spots2) {
     updateRareSpots();
   }
 
+  //リセットボタン
   window.resetGame = function () {
-
     if (
       !confirm(
         "得点と回答履歴をすべてリセットしますか？"
@@ -320,16 +333,15 @@ function initializeMap(spots, spots2) {
       return;
     }
 
+    //得点、回答履歴、到達履歴をリセットする
     localStorage.setItem(
       "totalScore",
       "0"
     );
-
     localStorage.setItem(
       "answeredSpots",
       JSON.stringify([])
     );
-
     localStorage.setItem(
       "arrivalSpots",
       JSON.stringify([])
@@ -341,7 +353,9 @@ function initializeMap(spots, spots2) {
 
     location.reload();
   };
-
+  //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  //スポット追加部分
+  //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   const openAddForm =
     document.getElementById("openAddForm");
 
@@ -410,40 +424,35 @@ function initializeMap(spots, spots2) {
         event.preventDefault();
 
         try {
-
+          //追加スポット詳細入力部分
           const name =
             document.getElementById(
               "spotName"
             ).value.trim();
-
           const lat = Number(
             document.getElementById(
               "spotLat"
             ).value
           );
-
           const lng = Number(
             document.getElementById(
               "spotLng"
             ).value
           );
-
           const radius = Number(
             document.getElementById(
               "spotRadius"
             ).value
           );
-
           const image =
             document.getElementById(
               "spotImage"
             ).value.trim();
-
+          //不備
           if (!name)
             throw new Error(
               "スポット名を入力してください。"
             );
-
           if (
             !Number.isFinite(lat) ||
             lat < -90 ||
@@ -456,7 +465,6 @@ function initializeMap(spots, spots2) {
               "緯度・経度が正しくありません。"
             );
           }
-
           if (
             !Number.isFinite(radius) ||
             radius < 1 ||
@@ -466,7 +474,6 @@ function initializeMap(spots, spots2) {
               "範囲は1～10000mで指定してください。"
             );
           }
-
           if (
             [...spots, ...spots2]
               .some(s => s.name === name)
@@ -482,7 +489,6 @@ function initializeMap(spots, spots2) {
               document.getElementById(
                 `q${i}`
               ).value.trim();
-
             const explanation =
               document.getElementById(
                 `e${i}`
@@ -614,7 +620,7 @@ function initializeMap(spots, spots2) {
 
 loadSpotData();
 
-//追加スポットのリセット
+//追加スポットのリセットボタン
 window.deleteAddedSpots = function () {
   if (!confirm("追加したスポット・レアスポット・クイズを削除しますか？")) {
     return;
