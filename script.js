@@ -609,3 +609,15 @@ function initializeMap(spots, spots2) {
 }
 
 loadSpotData();
+
+//追加スポットのリセット
+window.deleteAddedSpots = function () {
+  if (!confirm("追加したスポット・レアスポット・クイズを削除しますか？")) {
+    return;
+  }
+  localStorage.removeItem("addedSpots");
+  localStorage.removeItem("addedRareSpots");
+  localStorage.removeItem("addedQuizData");
+  alert("追加したスポットデータを削除しました。");
+  location.reload();
+};
