@@ -256,8 +256,10 @@ function initializeMap(spots, spots2) {
             found = true;
 
             document.getElementById("result").innerHTML =
-            `<b>${spots2.includes(spot) ? "★ " : ""}${spot.name}に到達！</b><br>
-             <a href="quiz </a>`;
+              `<b>${spots2.includes(spot) ? "★ " : ""}${spot.name}に到達！</b><br>
+               <a href="quiz.html?spot=${encodeURIComponent(spot.name)}">
+               クイズへ
+               </a>`;
 
             break;
           }
