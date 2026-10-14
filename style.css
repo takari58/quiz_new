@@ -85,3 +85,66 @@ header h1{
         font-size:24px;
     }
 }
+
+#addSpotArea {
+    margin: 12px;
+    text-align: center;
+}
+
+#openAddForm {
+    padding: 12px 20px;
+    background: #26734d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#addSpotForm {
+    margin: 12px;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+}
+
+#addSpotForm[hidden],
+#rareSettings[hidden] {
+    display: none;
+}
+
+#spotForm label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+#spotForm input,
+#spotForm select,
+#spotForm textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 9px;
+    margin-top: 5px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#spotForm textarea {
+    min-height: 65px;
+    resize: vertical;
+}
+
+#spotForm button {
+    margin-top: 16px;
+    margin-right: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+#addSpotMessage {
+    color: #26734d;
+    font-weight: bold;
+}
