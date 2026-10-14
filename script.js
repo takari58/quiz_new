@@ -1,3 +1,4 @@
+//現在地アイコン詳細
 const userIcon = L.icon({
   iconUrl: "current-pin.png",
   iconSize: [40, 40],
@@ -5,8 +6,10 @@ const userIcon = L.icon({
   popupAnchor: [0, -40]
 });
 
+//マップ初期位置
 const map = L.map("map").setView([37.9555, 139.3400], 15);
 
+//マップタイル
 L.tileLayer(
   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   {
@@ -14,6 +17,7 @@ L.tileLayer(
   }
 ).addTo(map);
 
+//jsonからスポットデータの読み込み
 async function loadSpotData() {
   try {
     const [spotsResponse, spots2Response] = await Promise.all([
@@ -51,11 +55,11 @@ async function loadSpotData() {
 }
 
 function initializeMap(spots, spots2) {
-
+//回答済み
   let answeredSpots = JSON.parse(
     localStorage.getItem("answeredSpots") || "[]"
   );
-
+//到達済み
   let arrivalSpots = JSON.parse(
     localStorage.getItem("arrivalSpots") || "[]"
   );
