@@ -21,6 +21,93 @@
 
 <div id="map"></div>
 
+
+<!-- スポット追加ボタン -->
+<div id="addSpotArea">
+    <button id="openAddForm" type="button">
+        ＋ スポット・クイズを追加
+    </button>
+</div>
+
+<!-- 追加フォーム -->
+<section id="addSpotForm" hidden>
+    <h2>新しいスポットを追加</h2>
+
+    <form id="spotForm">
+        <label for="spotType">スポットの種類</label>
+        <select id="spotType" required>
+            <option value="normal">ノーマルスポット</option>
+            <option value="rare">激レアスポット</option>
+        </select>
+
+        <label for="spotName">スポット名</label>
+        <input id="spotName" type="text" required>
+
+        <label for="spotLat">緯度</label>
+        <input id="spotLat" type="number"
+               step="any" min="-90" max="90" required>
+
+        <label for="spotLng">経度</label>
+        <input id="spotLng" type="number"
+               step="any" min="-180" max="180" required>
+
+        <label for="spotRadius">クイズ可能範囲（メートル）</label>
+        <input id="spotRadius" type="number"
+               min="1" max="10000" value="50" required>
+
+        <div id="rareSettings" hidden>
+            <label for="unlockPoint">解放に必要な得点</label>
+            <input id="unlockPoint" type="number"
+                   min="0" value="5000">
+        </div>
+
+        <label for="spotImage">画像パス（任意）</label>
+        <input id="spotImage" type="text"
+               placeholder="image/example.jpg">
+
+        <hr>
+
+        <h3>クイズ1</h3>
+        <label for="q1">問題文</label>
+        <input id="q1" type="text" required>
+        <label for="a1">正解</label>
+        <select id="a1">
+            <option value="true">〇</option>
+            <option value="false">×</option>
+        </select>
+        <label for="e1">解説</label>
+        <textarea id="e1" required></textarea>
+
+        <h3>クイズ2</h3>
+        <label for="q2">問題文</label>
+        <input id="q2" type="text" required>
+        <label for="a2">正解</label>
+        <select id="a2">
+            <option value="true">〇</option>
+            <option value="false">×</option>
+        </select>
+        <label for="e2">解説</label>
+        <textarea id="e2" required></textarea>
+
+        <h3>クイズ3</h3>
+        <label for="q3">問題文</label>
+        <input id="q3" type="text" required>
+        <label for="a3">正解</label>
+        <select id="a3">
+            <option value="true">〇</option>
+            <option value="false">×</option>
+        </select>
+        <label for="e3">解説</label>
+        <textarea id="e3" required></textarea>
+
+        <button type="submit">スポットとクイズを登録</button>
+        <button id="cancelAddForm" type="button">キャンセル</button>
+    </form>
+
+    <p id="addSpotMessage" role="status"></p>
+</section>
+
+
 <div id="coords"></div> 
 
 <div id="result">現在地を取得中...</div>
