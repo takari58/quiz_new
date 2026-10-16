@@ -68,9 +68,12 @@ function initializeMap(spots, spots2) {
   spots.forEach(spot => {
 
     const popupContent = `
-      <div style="text-align:center;">
-        <h3>${spot.name}</h3>
-        ${spot.image ? `${spot.image}` : ""}
+      const popupContent = `
+        <div style="text-align:center;">
+          <h3>${spot.name}</h3>
+          ${
+            spot.image
+              ? `<img src="${spot.image}" alt="${spot.name}" style="width:200px;max-width:100
       </div>
     `;
 
@@ -143,7 +146,10 @@ function initializeMap(spots, spots2) {
         : `
           <div style="text-align:center;">
             <h3>★ ${spot.name}</h3>
-            ${spot.image ? `${spot.image}<br>` : ""}
+            ${
+              spot.image
+                ? `<img src="${spot.image : ""
+            }
             <p>激レアスポット解放！</p>
           </div>
         `;
