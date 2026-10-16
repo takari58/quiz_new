@@ -4,21 +4,21 @@
         "lat": 37.954824724542696,   
         "lng": 139.326001834219947,  
         "radius": 50,                
-        "image":"image/castle.png"         
+        "image":"image/城.png"         
     },
     {
         "name": "清水園",
         "lat": 37.943791,
         "lng": 139.328785,
         "radius": 50,
-        "image":"image/simizu.jpg"
+        "image":"image/清水園.jpg"
     },
     {
         "name": "蔵春閣",
         "lat": 37.94389807273562,
         "lng": 139.3317142467578,
         "radius": 20,
-        "image":"image/zoushunkaku.jpg"
+        "image":"image/蔵春閣.jpg"
     },
     {
         "name": "東公園のSL",
@@ -32,90 +32,90 @@
         "lat": 37.944214,
         "lng": 139.332004,
         "radius": 20,
-        "image":"image/suwa.jpg"
+        "image":"image/諏訪神社.jpg"
     },
     {
         "name": "新発田市役所",
         "lat": 37.947839,
         "lng": 139.327160,
         "radius": 30,
-        "image":"image/castle.png"
+        "image":"image/役所.png"
     },
     {
         "name": "王紋酒造",
         "lat": 37.94436989072327,
         "lng": 139.33066511399528,
         "radius": 30,
-        "image":"image/castle.png"
+        "image":"image/王紋.png"
     },
     {
         "name": "五十公野公園",
         "lat": 37.939869,
         "lng": 139.356680,
         "radius": 80,
-        "image":"image/park.png"
+        "image":"image/五十公野公園.png"
     },
     {
         "name": "カルチャーセンター",
         "lat": 37.950246,
         "lng": 139.338618,
         "radius": 45,
-        "image":"image/castle.png"
+        "image":"image/カルチャー.png"
     },
     {
         "name": "新発田駅",
         "lat": 37.94413,
         "lng": 139.33510,
         "radius": 35,
-        "image":"image/station.png"
+        "image":"image/駅.png"
     },
     {
         "name": "あやめの湯",
         "lat": 37.953545,
         "lng": 139.3549475,
         "radius": 50,
-        "image":"image/castle.png"
+        "image":"image/あやめの湯.png"
     },
     {
         "name": "イクネスしばた",
         "lat": 37.944357,
         "lng": 139.333388,
         "radius": 30,
-        "image":"image/ikunesu.jpg"
+        "image":"image/イクネス.jpg"
     },
     {
         "name": "市民文化会館",
         "lat": 37.951722,
         "lng":139.326564,
         "radius": 30,
-        "image":"image/castle.png"
+        "image":"image/文化会館.png"
     },
     {
         "name": "新発田歴史図書館",
         "lat": 37.951279909157336,
         "lng": 139.32774756292181,
         "radius": 30,
-        "image":"image/castle.png"
+        "image":"image/歴史図書館.png"
     },
     {
         "name": "旧新発田市役所",
         "lat": 37.950883,
         "lng": 139.327898,
         "radius": 30,
-        "image":"image/castle.png"
+        "image":"image/旧役所.png"
     },
     {
         "name": "新潟職能短大",
         "lat": 37.956067,
         "lng": 139.337938,
         "radius":200,
-        "image":"image/school.png"
+        "image":"image/短大.png"
     },
     {
         "name": "菊水",
         "lat": 37.960376479226,
         "lng": 139.35429135822383,
         "radius": 30,
-        "image":"image/castle.png"
+        "image":"image/菊水.png"
     }
 ]
