@@ -72,7 +72,9 @@ function initializeMap(spots, spots2) {
         <h3>${spot.name}</h3>
           ${
             spot.image
-              ? `<img src="${spot.image}" alt="${spot.name}" style="width:200px;max-width:100"
+              ? `<img src="${spot.image}" 
+                  alt="${spot.name}" 
+                  style="width: //200px;max-width:100
       </div>
     `;
 
@@ -147,7 +149,8 @@ function initializeMap(spots, spots2) {
             <h3>★ ${spot.name}</h3>
             ${
               spot.image
-                ? `<img src="${spot.image : ""
+                ? `<img src="${spot.image}
+                : ""
             }
             <p>激レアスポット解放！</p>
           </div>
