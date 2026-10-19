@@ -1,12 +1,5 @@
 [
     {
-        "name": "テスト",
-        "lat": 37.958972,  
-        "lng":139.339891,
-        "radius": 50,
-        "unlockPoint":0
-    },
-    {
       "name": "藤倉メンチカツや",
       "lat": 37.93682,
       "lng": 139.34488,
@@ -14,14 +7,6 @@
       "unlockPoint":480,
       "image":"image/メンチカツ.jpg"
     },
-    {
-      "name": "ボン・タケダ",
-      "lat": 37.94039, 
-      "lng": 139.33600,
-      "radius": 50,
-      "unlockPoint":960,
-      "image":"image/タケダ.jpg"
-    }, 
     {
       "name": "いっぷく",
       "lat": 37.94437654050752, 
@@ -53,5 +38,21 @@
       "radius": 30,
       "unlockPoint":3360,
       "image":"image/蒲城.jpg"
-    }
+    },
+    {
+      "name": "コーヒーマリーナ 煉瓦屋",
+      "lat": 37.94901564395905, 
+      "lng": 139.3243217255289,
+      "radius": 30,
+      "unlockPoint":3360,
+      "image":"image/煉瓦屋.png"
+    },
+    {
+      "name": "パーラーやお屋",
+      "lat": 37.9584998, 
+      "lng": 139.3425282,
+      "radius": 30,
+      "unlockPoint":3360,
+      "image":"image/やおや.jpg"
+    },
 ]
