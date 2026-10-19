@@ -68,15 +68,15 @@ function initializeMap(spots, spots2) {
 spots.forEach(spot => {
 
   const popupContent = `
-  <div style="text-align:center;">
-    <h3>${spot.name}</h3>
-    ${
-      spot.image
-        ? `${spot.image}`
-      :""
-    }
+    <div style="text-align:center;">
+      <h3>${spot.name}</h3>
+      ${
+        spot.image
+          ? `${spot.image}`
+          :""
+      }
     </div>
-  `;             
+  `;
 
   //各スポットにマーカー設置
   L.marker([spot.lat, spot.lng])
@@ -160,6 +160,7 @@ spots.forEach(spot => {
       spot.marker = marker;
     });
   }
+
   //距離計算(ハーサイン公式)
   function getDistance(lat1, lng1, lat2, lng2) {
 
@@ -638,3 +639,4 @@ window.deleteAddedSpots = function () {
   alert("追加したスポットデータを削除しました。");
   location.reload();
 };
+画像を表示するには？クイズは解決しました
