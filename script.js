@@ -639,4 +639,3 @@ window.deleteAddedSpots = function () {
   alert("追加したスポットデータを削除しました。");
   location.reload();
 };
-画像を表示するには？クイズは解決しました
