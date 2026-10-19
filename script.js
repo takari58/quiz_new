@@ -68,9 +68,8 @@ function initializeMap(spots, spots2) {
   spots.forEach(spot => {
 
     const popupContent = `
-      const popupContent = `
-        <div style="text-align:center;">
-          <h3>${spot.name}</h3>
+      <div style="text-align:center;">
+        <h3>${spot.name}</h3>
           ${
             spot.image
               ? `<img src="${spot.image}" alt="${spot.name}" style="width:200px;max-width:100
