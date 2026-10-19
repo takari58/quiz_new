@@ -64,35 +64,33 @@ function initializeMap(spots, spots2) {
     localStorage.getItem("arrivalSpots") || "[]"
   );
 
-  //通常スポット表示
-  spots.forEach(spot => {
+ //通常スポット表示
+spots.forEach(spot => {
 
-    const popupContent = `
-      <div style="text-align:center;">
-        <h3>${spot.name}</h3>
-          ${
-            spot.image
-              ? `<img src="${spot.image}" 
-                  alt="${spot.name}" 
-                  style="width: //200px;max-width:100
-      </div>
-    `;
+  const popupContent = `
+    <div style="text-align:center;">
+      <h3>${spot.name}</h3>
+      ${
+        spot.image
+          ? `<img src="${spot.image}"
+                  /div>
+  `;
 
-    //各スポットにマーカー設置
-    L.marker([spot.lat, spot.lng])
-      .addTo(map)
-      .bindPopup(popupContent);
+  //各スポットにマーカー設置
+  L.marker([spot.lat, spot.lng])
+    .addTo(map)
+    .bindPopup(popupContent);
 
-    //回答可能範囲の円
-    L.circle(
-      [spot.lat, spot.lng],
-      {
-        radius: spot.radius,
-        color: "blue",
-        fillOpacity: 0.2
-      }
-    ).addTo(map);
-  });
+  //回答可能範囲の円
+  L.circle(
+    [spot.lat, spot.lng],
+    {
+      radius: spot.radius,
+      color: "blue",
+      fillOpacity: 0.2
+    }
+  ).addTo(map);
+});
 
   //激レア処理
   function updateRareSpots() {
