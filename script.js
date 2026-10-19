@@ -72,8 +72,11 @@ spots.forEach(spot => {
     <h3>${spot.name}</h3>
     ${
       spot.image
-        ? `<img src="${spot.image}" alt="${spot.name}"
-             style="width:200px;max-width:100%;height:
+        ? `${spot.image}`
+      :""
+    }
+    </div>
+  `;             
 
   //各スポットにマーカー設置
   L.marker([spot.lat, spot.lng])
@@ -135,27 +138,28 @@ spots.forEach(spot => {
       ).addTo(map);
 
       const popupContent = answered
-  ? `
-      <div style="text-align:center;">
-        <h3>★ ${spot.name}</h3>
-        <p>回答済み</p>
-      </div>
-    `
-  : `
-      <div style="text-align:center;">
-        <h3>★ ${spot.name}</h3>
-        ${
-          spot.image
-            ? `<img src="${spot.image}" alt="${spot.name}"
-                 style>
-      </div>
-    `;
+        ? `
+          <div style="text-align:center;">
+            <h3>★ ${spot.name}</h3>
+            <p>回答済み</p>
+          </div>
+        `
+        : `
+          <div style="text-align:center;">
+            <h3>★ ${spot.name}</h3>
+            ${
+              spot.image
+                ? `${spot.image}`
+                : ""
+            }
+            <p>激レアスポット解放！</p>
+          </div>
+        `;
 
       marker.bindPopup(popupContent);
       spot.marker = marker;
     });
   }
-
   //距離計算(ハーサイン公式)
   function getDistance(lat1, lng1, lat2, lng2) {
 
