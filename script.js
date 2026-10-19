@@ -72,8 +72,10 @@ spots.forEach(spot => {
       <h3>${spot.name}</h3>
       ${
         spot.image
-          ? `<img src="${spot.image}"
-                  /div>
+          ? `${spot.image}`
+          :""
+      }
+    </div>
   `;
 
   //各スポットにマーカー設置
