@@ -72,8 +72,9 @@ spots.forEach(spot => {
       <h3>${spot.name}</h3>
       ${
         spot.image
-          ? `<img
-            src="${spot}
+          ? `${spot.image}`
+          :""
+      }
     </div>
   `;
 
@@ -148,10 +149,7 @@ spots.forEach(spot => {
             <h3>★ ${spot.name}</h3>
             ${
               spot.image
-                ? `<img
-                      src="${spot.image}"
-                      alt="${spot.name}"
-                      style="width
+                ? `${spot.image}`
                 : ""
             }
             <p>激レアスポット解放！</p>
@@ -641,4 +639,4 @@ window.deleteAddedSpots = function () {
   alert("追加したスポットデータを削除しました。");
   location.reload();
 };
-
+画像を表示するには？クイズは解決しました
