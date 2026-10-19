@@ -149,7 +149,7 @@ spots.forEach(spot => {
             <h3>★ ${spot.name}</h3>
             ${
               spot.image
-                ? `<img src="${spot.image}
+                ? `${spot.image}`
                 : ""
             }
             <p>激レアスポット解放！</p>
