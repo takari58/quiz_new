@@ -7,13 +7,28 @@ const userIcon = L.icon({
 });
 
 //マップ初期位置
-const map = L.map("map").setView([37.9555, 139.3400], 15);
+const map = L.map("map",{
+  maxZoom:19,
+  minZoom:13
+})
+navigator.geolocation.getCurrentPosition(
+  function(position){
+    const lat = position.coords.latitude;
+    const lng = position.coords.lungitude;
+    map.setView([lat,lng],18);
+    updateCurrentMaker(
+      lat,lng,
+      position.coords.accuracy
+    );
+  }
+);
 
 //マップタイル
 L.tileLayer(
   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   {
     attribution: "&copy; OpenStreetMap contributors"
+    maxZoom:19
   }
 ).addTo(map);
 
