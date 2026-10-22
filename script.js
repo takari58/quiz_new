@@ -164,14 +164,10 @@ spots.forEach(spot => {
 
   //距離計算(ハーサイン公式)
   function getDistance(lat1, lng1, lat2, lng2) {
-
     const R = 6371000;
-
     const toRad = x => x * Math.PI / 180;
-
     const dLat = toRad(lat2 - lat1);
     const dLng = toRad(lng2 - lng1);
-
     const a =
       Math.sin(dLat / 2) ** 2 +
       Math.cos(toRad(lat1)) *
@@ -218,23 +214,16 @@ spots.forEach(spot => {
       "この端末では位置情報を利用できません。";
 
   } else {
-
     navigator.geolocation.watchPosition(
-
       position => {
-
         const userLat =
           position.coords.latitude;
-
         const userLng =
           position.coords.longitude;
-
         document.getElementById("coords").innerHTML =
           `緯度: ${userLat.toFixed(6)}<br>経度: ${userLng.toFixed(6)}`;
-
         if (window.userMarker)
           map.removeLayer(window.userMarker);
-
         //現在地マーカー
         window.userMarker = L.marker(
           [userLat, userLng],
@@ -242,31 +231,24 @@ spots.forEach(spot => {
         )
           .addTo(map)
           .bindPopup("現在地");
-
         let found = false;
-
         const currentAnswered = JSON.parse(
           localStorage.getItem("answeredSpots") || "[]"
         );
-
         const totalScore =
           Number(localStorage.getItem("totalScore")) || 0;
-
         for (const spot of [...spots, ...spots2]) {
-
           if (
             spots2.includes(spot) &&
             totalScore < spot.unlockPoint
           ) {
             continue;
           }
-
           if (
             currentAnswered.includes(spot.name)
           ) {
             continue;
           }
-
           //円に入ったかの計算
           const distance = getDistance(
             userLat,
@@ -274,39 +256,30 @@ spots.forEach(spot => {
             spot.lat,
             spot.lng
           );
-
           if (distance <= spot.radius) {
-
             found = true;
-
             //激レア到達時の青文字
             document.getElementById("result").innerHTML =
               `<b>${spots2.includes(spot) ? "★ " : ""}${spot.name}に到達！</b><br>
                <a href="quiz.html?spot=${encodeURIComponent(spot.name)}">
                クイズへ
                </a>`;
-
             break;
           }
         }
-
         if (!found) {
           document.getElementById("result").textContent =
             "新発田市内を移動してください";
         }
       },
-
       error => {
-
         console.error(
           "位置情報エラー:",
           error
         );
-
         document.getElementById("result").textContent =
           "位置情報が取得できません。";
       },
-
       {
         enableHighAccuracy: true,
         maximumAge: 5000,
@@ -317,13 +290,10 @@ spots.forEach(spot => {
 
   //得点の更新
   function updateTotalScore() {
-
     const totalScore =
       Number(localStorage.getItem("totalScore")) || 0;
-
     const scoreElement =
       document.getElementById("totalScore");
-
     if (scoreElement) {
       scoreElement.textContent =
         `現在の得点：${totalScore}点`;
